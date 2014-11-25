@@ -1,0 +1,21 @@
+.js #canvas {
+	margin: 0 auto;
+	display: block;
+	border: 1px solid #ccc;
+}
+
+#generate {
+	margin-top: 8px;
+}
+
+#algs {
+	margin-top: 32px;
+}
+
+table.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+table.table > tbody > tr > td {
+	border: 0;
+}
