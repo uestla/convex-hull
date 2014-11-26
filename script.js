@@ -42,12 +42,12 @@
 			canvas.clearCanvas();
 
 			for (var i = 0, len = points.length; i < len; i++) {
-				drawPoint('' + i, points[i].x, points[i].y, '#777', '' + i);
+				drawPoint('' + i, points[i].x, points[i].y, '#000', '#777', '' + i);
 			}
 		}
 
 
-		function drawPoint(name, x, y, color, label)
+		function drawPoint(name, x, y, borderColor, fillColor, label)
 		{
 			canvas.drawArc({
 					x: x,
@@ -55,8 +55,8 @@
 					radius: 6,
 					layer: true,
 					strokeWidth: 3,
-					fillStyle: color,
-					strokeStyle: '#000',
+					fillStyle: fillColor,
+					strokeStyle: borderColor,
 					name: 'point.' + name,
 					groups: [ 'point.' + name ]
 				});
@@ -74,10 +74,10 @@
 		}
 
 
-		function highlightPoint(p, color)
+		function highlightPoint(p, borderColor, fillColor)
 		{
 			canvas.removeLayer('point.' + p.i);
-			drawPoint('' + p.i, p.x, p.y, color, '' + p.i);
+			drawPoint('' + p.i, p.x, p.y, borderColor, fillColor, '' + p.i);
 		}
 
 
@@ -122,7 +122,7 @@
 			}
 
 			polygon = sortConvexPolygon(polygon);
-			drawPolygon(polygon, '#99f');
+			drawPolygon(polygon, '#44f', '#99f');
 
 			return counter;
 		}
@@ -174,18 +174,34 @@
 
 			} while (current !== first);
 
-			drawPolygon(polygon, '#99f');
+			drawPolygon(polygon, '#44f', '#99f');
 
 			return counter;
 		}
 
 
-		function drawPolygon(polygon, color)
+		function chQuickHull()
+		{
+			// ...
+		}
+
+
+		function _chQuickHull(a, b, points)
+		{
+			if (!points.length) {
+				return [];
+			}
+
+			// ...
+		}
+
+
+		function drawPolygon(polygon, borderColor, color)
 		{
 			canvas.removeLayerGroup('polygon').drawLayers();
 
 			for (var i = 0, len = polygon.length; i < len; i++) {
-				highlightPoint(polygon[i], color);
+				highlightPoint(polygon[i], borderColor, color);
 
 				canvas.drawLine({
 					layer: true,
@@ -269,7 +285,7 @@
 		}
 
 
-		function operationCountInfo(count, algName)
+		function operationCountInfo(count, elapsedTime, algName)
 		{
 			canvas.drawText({
 				x: 10,
@@ -280,8 +296,18 @@
 				fillStyle: '#777',
 				fromCenter: false,
 				name: 'operationCount',
-				text: 'Number of operations: ' + count + ' (' + algName + ')'
+				text: count + ' operations in ' + elapsedTime + 'ms (' + algName + ')'
 			});
+		}
+
+
+		function runAlgorithm(callback, name)
+		{
+			var start = (new Date()).getTime();
+			var operationCount = callback();
+			var elapsed = (new Date()).getTime() - start;
+
+			operationCountInfo(operationCount, elapsed, name);
 		}
 
 
@@ -313,13 +339,18 @@
 		});
 
 
-		$('#alg-primitive').on('click', function (event) {
-			operationCountInfo(chPrimitive(), 'primitive');
+		$('#alg-quick-hull').on('click', function (event) {
+			runAlgorithm(chQuickHull, 'quick hull');
 		});
 
 
 		$('#alg-gift-packing').on('click', function (event) {
-			operationCountInfo(chGiftPacking(), 'gift packing');
+			runAlgorithm(chGiftPacking, 'gift packing');
+		});
+
+
+		$('#alg-primitive').on('click', function (event) {
+			runAlgorithm(chPrimitive, 'primitive');
 		});
 
 
@@ -328,7 +359,8 @@
 
 			for (var i = 0, len = points.length; i < len; i++) {
 				canvas.setLayer('point.' + i, {
-					fillStyle: '#777'
+					fillStyle: '#777',
+					strokeStyle: '#000'
 				});
 			}
 

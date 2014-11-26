@@ -40,7 +40,7 @@
 						</div>
 
 						<div class="col-sm-10">
-							<input type="range" min="10" max="200" step="10" value="40" id="point-count">
+							<input type="range" min="10" max="250" step="10" value="150" id="point-count">
 						</div>
 					</div>
 
@@ -62,15 +62,15 @@
 							<tbody>
 								<tr>
 									<td>
-										<button class="btn btn-block btn-sm btn-danger" id="alg-primitive" disabled>Primitive</button>
+										<button class="btn btn-block btn-sm btn-success" id="alg-quick-hull" disabled>Quick Hull</button>
 									</td>
 
-									<td>n<sup>4</sup></td>
+									<td>n×<abbr title="h &hellip; number of vertices">h</abbr>, <abbr title="h &hellip; number of vertices">h</abbr>×log(n)</td>
 								</tr>
 
 								<tr>
 									<td>
-										<button class="btn btn-block btn-sm btn-info" id="alg-gift-packing" disabled>GiftPacking</button>
+										<button class="btn btn-block btn-sm btn-info" id="alg-gift-packing" disabled>Gift Packing</button>
 									</td>
 
 									<td>n×<abbr title="h &hellip; number of vertices">h</abbr></td>
@@ -78,16 +78,16 @@
 
 								<tr>
 									<td>
-										<button class="btn btn-block btn-sm btn-success" id="alg-quick-hull" disabled>QuickHull</button>
+										<button class="btn btn-block btn-sm btn-danger" id="alg-primitive" disabled>Primitive</button>
 									</td>
 
-									<td>n×<abbr title="h &hellip; number of vertices">h</abbr> - <abbr title="h &hellip; number of vertices">h</abbr>×log(n)</td>
+									<td>n<sup>4</sup></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<button class="btn btn-block btn-sm btn-primary" id="clear" disabled>Clear</button>
+					<button class="btn btn-block btn-sm btn-primary" id="clear" disabled>Clear solution</button>
 				</div>
 
 				<div class="col-sm-9">
@@ -95,6 +95,10 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div id="footer">
+			<a href="http://kesspess.1991.cz/">Petr Kessler</a> | POGR1 | FJFI CTU Prague | 2014
 		</div>
 
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

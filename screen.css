@@ -19,3 +19,21 @@ table.table > tbody > tr > td {
 table.table > tbody > tr > td {
 	border: 0;
 }
+
+#footer {
+	color: #777;
+	right: 20px;
+	bottom: 20px;
+	font-size: 11px;
+	position: fixed;
+	text-align: right;
+}
+
+#footer a {
+	color: #777;
+	text-decoration: underline;
+}
+
+#footer a:hover {
+	color: #444;
+}
