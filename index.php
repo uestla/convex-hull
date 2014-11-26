@@ -70,7 +70,7 @@
 
 								<tr>
 									<td>
-										<button class="btn btn-block btn-sm btn-info" id="alg-gift-packaging" disabled>GiftPacking</button>
+										<button class="btn btn-block btn-sm btn-info" id="alg-gift-packing" disabled>GiftPacking</button>
 									</td>
 
 									<td>n×<abbr title="h &hellip; number of vertices">h</abbr></td>
@@ -86,10 +86,12 @@
 							</tbody>
 						</table>
 					</div>
+
+					<button class="btn btn-block btn-sm btn-primary" id="clear" disabled>Clear</button>
 				</div>
 
 				<div class="col-sm-9">
-					<canvas id="canvas" width="800" height="400"></canvas>
+					<canvas id="canvas" width="800" height="450"></canvas>
 				</div>
 			</div>
 

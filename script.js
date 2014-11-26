@@ -13,12 +13,25 @@
 		{
 			points = [];
 
-			for (var i = 0; i < num; i++) {
-				points.push({
-					i: i,
-					x: padding + Math.floor((width - 2 * padding) * Math.random()),
-					y: padding + Math.floor((height - 2 * padding) * Math.random())
-				});
+			while (points.length < num) {
+				var duplicate = false;
+				var x = padding + Math.floor((width - 2 * padding) * Math.random());
+				var y = padding + Math.floor((height - 2 * padding) * Math.random());
+
+				for (var i = 0, len = points.length; i < len; i++) {
+					if (points[i].x === x || points[i].y === y) {
+						duplicate = true;
+						break;
+					}
+				}
+
+				if (!duplicate) {
+					points.push({
+						i: i,
+						x: x,
+						y: y
+					});
+				}
 			}
 		}
 
@@ -70,10 +83,12 @@
 
 		function chPrimitive()
 		{
+			var counter = 0;
 			var polygon = [];
 			var pointCount = points.length;
 
 			for (var i = 0; i < pointCount; i++) {
+				counter++;
 				var isCP = true;
 
 				for (var j = 0; isCP && j < pointCount; j++) {
@@ -81,16 +96,19 @@
 						continue;
 					}
 
+					counter++;
 					for (var k = 0; isCP && k < pointCount; k++) {
 						if (i === k || j === k) {
 							continue;
 						}
 
+						counter++;
 						for (var l = 0; isCP && l < pointCount; l++) {
 							if (i === l || j === l || k === l) {
 								continue;
 							}
 
+							counter++;
 							if (laysInPolygon(points[i], points[j], points[k], points[l])) {
 								isCP = false;
 							}
@@ -104,16 +122,70 @@
 			}
 
 			polygon = sortConvexPolygon(polygon);
-			drawPolygon(polygon, '#0c0');
+			drawPolygon(polygon, '#99f');
+
+			return counter;
+		}
+
+
+		function chGiftPacking()
+		{
+			var counter = 0;
+			var polygon = [];
+			var pointCount = points.length;
+
+			var first = null;
+
+			for (var i = 0; i < pointCount; i++) {
+				if (first === null || points[i].x > first.x) {
+					first = points[i];
+				}
+			}
+
+			var current = first;
+			var line = [ 0, -1 ];
+
+			do {
+				counter++;
+				polygon.push(current);
+
+				var angle = null;
+				var newLine = null;
+				var newCurrent = null;
+
+				for (var i = 0; i < pointCount; i++) {
+					if (points[i] === current) {
+						continue;
+					}
+
+					counter++;
+					var tmpLine = [ points[i].x - current.x, points[i].y - current.y ];
+					var tmpAngle = vectorsAngle(line, tmpLine);
+
+					if (angle === null || tmpAngle < angle) {
+						angle = tmpAngle;
+						newLine = tmpLine;
+						newCurrent = points[i];
+					}
+				}
+
+				line = newLine;
+				current = newCurrent;
+
+			} while (current !== first);
+
+			drawPolygon(polygon, '#99f');
+
+			return counter;
 		}
 
 
 		function drawPolygon(polygon, color)
 		{
-			canvas.removeLayerGroup('polygon');
+			canvas.removeLayerGroup('polygon').drawLayers();
 
 			for (var i = 0, len = polygon.length; i < len; i++) {
-				highlightPoint(polygon[i], '#0c0');
+				highlightPoint(polygon[i], color);
 
 				canvas.drawLine({
 					layer: true,
@@ -191,6 +263,28 @@
 		}
 
 
+		function vectorsAngle(u, v)
+		{
+			return Math.atan2(u[0] * v[1] - v[0] * u[1], u[0] * v[0] + u[1] * v[1]);
+		}
+
+
+		function operationCountInfo(count, algName)
+		{
+			canvas.drawText({
+				x: 10,
+				y: 428,
+				layer: true,
+				fontSize: 12,
+				align: 'left',
+				fillStyle: '#777',
+				fromCenter: false,
+				name: 'operationCount',
+				text: 'Number of operations: ' + count + ' (' + algName + ')'
+			});
+		}
+
+
 		var pointCount = $('#point-count');
 		var pointCountInfo = $('#point-count-info');
 
@@ -207,6 +301,7 @@
 
 		$('#algs button').on('click', function (event) {
 			$('#algs button').attr('disabled', true);
+			$('#clear').attr('disabled', null);
 		});
 
 
@@ -219,7 +314,28 @@
 
 
 		$('#alg-primitive').on('click', function (event) {
-			chPrimitive();
+			operationCountInfo(chPrimitive(), 'primitive');
+		});
+
+
+		$('#alg-gift-packing').on('click', function (event) {
+			operationCountInfo(chGiftPacking(), 'gift packing');
+		});
+
+
+		$('#clear').on('click', function (event) {
+			canvas.removeLayerGroup('polygon').removeLayer('operationCount');
+
+			for (var i = 0, len = points.length; i < len; i++) {
+				canvas.setLayer('point.' + i, {
+					fillStyle: '#777'
+				});
+			}
+
+			canvas.drawLayers();
+
+			$(this).attr('disabled', true);
+			$('#algs button').attr('disabled', null);
 		});
 
 	});
