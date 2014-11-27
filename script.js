@@ -81,20 +81,21 @@
 			for (var i = 0; i < pointCount; i++) {
 				result.counter++;
 				var isCP = true;
+				var breakMe = false;
 
-				for (var j = 0; isCP && j < pointCount; j++) {
+				for (var j = 0; !breakMe && isCP && j < pointCount; j++) {
 					if (i === j) {
 						continue;
 					}
 
 					result.counter++;
-					for (var k = 0; isCP && k < pointCount; k++) {
+					for (var k = 0; !breakMe && isCP && k < pointCount; k++) {
 						if (i === k || j === k) {
 							continue;
 						}
 
 						result.counter++;
-						for (var l = 0; isCP && l < pointCount; l++) {
+						for (var l = 0; !breakMe && isCP && l < pointCount; l++) {
 							if (i === l || j === l || k === l) {
 								continue;
 							}
@@ -102,6 +103,7 @@
 							result.counter++;
 							if (laysPointInTriangle(points[i], points[j], points[k], points[l])) {
 								isCP = false;
+								breakMe = true;
 							}
 						}
 					}
@@ -113,9 +115,6 @@
 			}
 
 			result.polygon = sortConvexPolygon(result.polygon);
-			drawPolygon(result.polygon, '#44f', '#99f');
-
-			return result.counter;
 		}
 
 
@@ -154,10 +153,6 @@
 				current = newCurrent;
 
 			} while (current !== first);
-
-			drawPolygon(result.polygon, '#44f', '#99f');
-
-			return result.counter;
 		}
 
 
@@ -184,9 +179,6 @@
 			}
 
 			result.polygon = sortConvexPolygon(result.polygon);
-			drawPolygon(result.polygon, '#44f', '#99f');
-
-			return result.counter;
 		}
 
 
