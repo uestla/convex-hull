@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -70,7 +70,7 @@
 
 								<tr>
 									<td>
-										<button class="btn btn-block btn-sm btn-info" id="alg-gift-packing" disabled>Gift Packing</button>
+										<button class="btn btn-block btn-sm btn-info" id="alg-gift-wrapping" disabled>Gift Wrapping</button>
 									</td>
 
 									<td>n×<abbr title="h &hellip; number of vertices">h</abbr></td>
