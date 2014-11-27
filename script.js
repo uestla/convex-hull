@@ -79,7 +79,6 @@
 			var pointCount = points.length;
 
 			for (var i = 0; i < pointCount; i++) {
-				result.counter++;
 				var isCP = true;
 				var breakMe = false;
 
@@ -88,13 +87,11 @@
 						continue;
 					}
 
-					result.counter++;
 					for (var k = 0; !breakMe && isCP && k < pointCount; k++) {
 						if (i === k || j === k) {
 							continue;
 						}
 
-						result.counter++;
 						for (var l = 0; !breakMe && isCP && l < pointCount; l++) {
 							if (i === l || j === l || k === l) {
 								continue;
