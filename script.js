@@ -383,11 +383,11 @@
 			};
 
 			var start = (new Date()).getTime();
-			var operationCount = callback(result);
+			callback(result);
 			var elapsed = (new Date()).getTime() - start;
 
 			drawPolygon(result.polygon, '#44f', '#99f');
-			operationCountInfo(operationCount, elapsed, name);
+			operationCountInfo(result.counter, elapsed, name);
 		}
 
 
