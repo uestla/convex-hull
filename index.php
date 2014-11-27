@@ -5,7 +5,7 @@
 		<meta name="author" content="kesspess">
 		<meta name="robots" content="index,follow">
 
-		<title>Convex Hull algorithms | POGR1 </title>
+		<title>Convex Hull algorithms | POGR1</title>
 
 		<link rel="shortcut icon" href="<?php echo mtime('favicon.ico') ?>">
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css">
