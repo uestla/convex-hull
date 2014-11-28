@@ -7,4 +7,4 @@ shrinkJS:
 	java -jar build/compiler.jar --js ./script.js --js_output_file script.js
 
 shrinkCSS:
-	java -jar build/yuicompressor-2.4.7.jar --type css -o screen.css build/screen.css
+	java -jar build/yuicompressor-2.4.8.jar --type css -o screen.css build/screen.css
