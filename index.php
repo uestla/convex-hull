@@ -7,10 +7,10 @@
 
 		<title>Convex Hull algorithms | POGR1</title>
 
-		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo mtime('screen.css') ?>">
 
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 		<script type="text/javascript">(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-57169534-1","auto");ga("send","pageview");</script>
 	</head>
 
@@ -179,9 +179,9 @@
 			<a href="http://kesspess.1991.cz/">Petr Kessler</a> | <a href="#n" data-toggle="modal" data-target="#docs-modal">Docs (cs)</a> | <a href="https://github.com/uestla/convex-hull">GitHub</a> | POGR1 | FJFI CTU Prague | 2014
 		</div>
 
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="http://cdn.rawgit.com/caleb531/jcanvas/master/jcanvas.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="//cdn.rawgit.com/caleb531/jcanvas/master/jcanvas.min.js"></script>
 		<script type="text/javascript" src="<?php echo mtime('script.js') ?>"></script>
 
 	</body>
