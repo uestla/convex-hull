@@ -49,7 +49,7 @@
 		}
 
 
-		function drawPoint(name, x, y, borderColor, fillColor, label)
+		function drawPoint(name, x, y, borderColor, fillColor)
 		{
 			canvas.drawArc({
 				x: x,
@@ -80,19 +80,18 @@
 
 			for (var i = 0; i < pointCount; i++) {
 				var isCP = true;
-				var breakMe = false;
 
-				for (var j = 0; !breakMe && isCP && j < pointCount; j++) {
+				for (var j = 0; isCP && j < pointCount; j++) {
 					if (i === j) {
 						continue;
 					}
 
-					for (var k = 0; !breakMe && isCP && k < pointCount; k++) {
+					for (var k = 0; isCP && k < pointCount; k++) {
 						if (i === k || j === k) {
 							continue;
 						}
 
-						for (var l = 0; !breakMe && isCP && l < pointCount; l++) {
+						for (var l = 0; isCP && l < pointCount; l++) {
 							if (i === l || j === l || k === l) {
 								continue;
 							}
@@ -100,7 +99,6 @@
 							result.counter++;
 							if (laysPointInTriangle(points[i], points[j], points[k], points[l])) {
 								isCP = false;
-								breakMe = true;
 							}
 						}
 					}
@@ -164,16 +162,8 @@
 			result.polygon.push(min);
 			result.polygon.push(max);
 
-			var qhLeft = _chQuickHull(min, max, points, result);
-			var qhRight = _chQuickHull(max, min, points, result);
-
-			for (var i = 0, len = qhLeft; i < len; i++) {
-				result.polygon.push(qhLeft[i]);
-			}
-
-			for (var i = 0, len = qhRight; i < len; i++) {
-				result.polygon.push(qhRight[i]);
-			}
+			_chQuickHull(min, max, points, result);
+			_chQuickHull(max, min, points, result);
 
 			result.polygon = sortConvexPolygon(result.polygon);
 		}
@@ -379,6 +369,9 @@
 			operationCountInfo(result.counter, elapsed, name);
 		}
 
+
+
+		// === main events =======================================================
 
 		var pointCount = $('#point-count');
 		var pointCountInfo = $('#point-count-info');
