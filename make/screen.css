@@ -1,0 +1,43 @@
+body {
+	padding-bottom: 55px;
+}
+
+.js #canvas {
+	margin: 0 auto;
+	display: block;
+	border: 1px solid #ccc;
+}
+
+#generate {
+	margin-top: 8px;
+}
+
+#algs {
+	margin-top: 32px;
+}
+
+table.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+table.table > tbody > tr > td {
+	border: 0;
+}
+
+#footer {
+	color: #777;
+	right: 30px;
+	bottom: 20px;
+	font-size: 11px;
+	position: fixed;
+	text-align: right;
+}
+
+#footer a {
+	color: #777;
+	text-decoration: underline;
+}
+
+#footer a:hover {
+	color: #444;
+}

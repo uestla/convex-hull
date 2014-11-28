@@ -2,7 +2,9 @@
 /// <reference path="Program.ts" />
 
 
-interface Window { MyNamespace: any; }
+interface Window {
+	jQuery: JQuery;
+}
 
 
 (function (window, $) {

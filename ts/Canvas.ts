@@ -1,5 +1,6 @@
 /// <reference path="Point.ts" />
 /// <reference path="jquery.d.ts" />
+/// <reference path="jcanvas.d.ts" />
 
 
 class Canvas
@@ -49,7 +50,7 @@ class Canvas
 	highlightPoint(p: Point, borderColor: string, fillColor: string)
 	{
 		this.canvas.removeLayer('point.' + p.i);
-		this.drawPoint('' + p.i, p, borderColor, fillColor, '' + p.i);
+		this.drawPoint('' + p.i, p, borderColor, fillColor);
 	}
 
 
