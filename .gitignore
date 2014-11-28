@@ -1,4 +1,4 @@
 /nbproject
 /ts/jquery.d.ts
-/make/compiler.jar
-/make/yuicompressor-2.4.7.jar
+/build/compiler.jar
+/build/yuicompressor-2.4.7.jar

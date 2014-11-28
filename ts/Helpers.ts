@@ -69,6 +69,57 @@ class Helpers
 	}
 
 
+	static findFarthestPointFromLineToTheLeft(a: Point, b: Point, points: Point[])
+	{
+		var farthest = null;
+		var distance = null;
+
+		for (var i = 0, len = points.length; i < len; i++) {
+			if (points[i] === a || points[i] === b) {
+				continue;
+			}
+
+			if (!Helpers.isPointToTheLeftFromLine(points[i], a, b)) {
+				continue;
+			}
+
+			var newDistance = Helpers.pointFromLineDistance(points[i], a, b);
+
+			if (distance === null || newDistance > distance) {
+				farthest = points[i];
+				distance = newDistance;
+			}
+		}
+
+		return farthest;
+	}
+
+
+	static splitPointsByTriangle(a: Point, b: Point, c: Point, points: Point[])
+	{
+		var halfs = [[], []];
+
+		for (var i = 0, len = points.length; i < len; i++) {
+			if (points[i] === a || points[i] === b || points[i] === c) {
+				continue;
+			}
+
+			if (Helpers.laysPointInTriangle(points[i], a, b, c)) {
+				continue;
+			}
+
+			if (Helpers.isPointToTheLeftFromLine(points[i], a, c)) {
+				halfs[0].push(points[i]);
+
+			} else if (Helpers.isPointToTheLeftFromLine(points[i], c, b)) {
+				halfs[1].push(points[i]);
+			}
+		}
+
+		return halfs;
+	}
+
+
 	static isPointToTheLeftFromLine(x: Point, a: Point, b: Point)
 	{
 		return ((b.x - a.x) * (x.y - a.y) - (b.y - a.y) * (x.x - a.x)) < 0;

@@ -29,27 +29,9 @@ class ConvexHull
 			return ;
 		}
 
-		var farthest = null;
-		var distance = null;
+		var farthest = Helpers.findFarthestPointFromLineToTheLeft(a, b, points);
 
-		for (var i = 0, len = points.length; i < len; i++) {
-			if (points[i] === a || points[i] === b) {
-				continue;
-			}
-
-			result.counter++;
-			if (!Helpers.isPointToTheLeftFromLine(points[i], a, b)) {
-				continue;
-			}
-
-			var newDistance = Helpers.pointFromLineDistance(points[i], a, b);
-
-			if (distance === null || newDistance > distance) {
-				farthest = points[i];
-				distance = newDistance;
-			}
-		}
-
+		result.counter += points.length;
 		result.polygon.push(farthest);
 
 		var s1 = [];
@@ -73,8 +55,11 @@ class ConvexHull
 			}
 		}
 
-		ConvexHull._quickHull(a, farthest, s1, result);
-		ConvexHull._quickHull(farthest, b, s2, result);
+		var halfs = Helpers.splitPointsByTriangle(a, b, farthest, points);
+		result.counter += points.length;
+
+		ConvexHull._quickHull(a, farthest, halfs[0], result);
+		ConvexHull._quickHull(farthest, b, halfs[1], result);
 	}
 
 
