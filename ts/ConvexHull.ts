@@ -1,29 +1,30 @@
 /// <reference path="Point.ts" />
+/// <reference path="Result.ts" />
 /// <reference path="Helpers.ts" />
 
 
 class ConvexHull
 {
 
-	static quickHull(points: Point[], result)
+	static quickHull(points: Point[], result: Result)
 	{
 		var extremes = Helpers.findExtremes(points);
 		var min = extremes.min;
 		var max = extremes.max;
 
-		result.counter += points.length;
+		result.count(points.length);
 
-		result.polygon.push(min);
-		result.polygon.push(max);
+		result.addVertex(min);
+		result.addVertex(max);
 
 		ConvexHull._quickHull(min, max, points, result);
 		ConvexHull._quickHull(max, min, points, result);
 
-		result.polygon = Helpers.sortConvexPolygon(result.polygon);
+		result.sortPolygon();
 	}
 
 
-	static _quickHull(a: Point, b: Point, points: Point[], result)
+	private static _quickHull(a: Point, b: Point, points: Point[], result: Result)
 	{
 		if (!points.length) {
 			return ;
@@ -31,39 +32,18 @@ class ConvexHull
 
 		var farthest = Helpers.findFarthestPointFromLineToTheLeft(a, b, points);
 
-		result.counter += points.length;
-		result.polygon.push(farthest);
-
-		var s1 = [];
-		var s2 = [];
-
-		for (var i = 0, len = points.length; i < len; i++) {
-			if (points[i] === a || points[i] === b || points[i] === farthest) {
-				continue;
-			}
-
-			result.counter++;
-			if (Helpers.laysPointInTriangle(points[i], a, b, farthest)) {
-				continue;
-			}
-
-			if (Helpers.isPointToTheLeftFromLine(points[i], a, farthest)) {
-				s1.push(points[i]);
-
-			} else if (Helpers.isPointToTheLeftFromLine(points[i], farthest, b)) {
-				s2.push(points[i]);
-			}
-		}
+		result.addVertex(farthest);
+		result.count(points.length);
 
 		var halfs = Helpers.splitPointsByTriangle(a, b, farthest, points);
-		result.counter += points.length;
+		result.count(points.length);
 
 		ConvexHull._quickHull(a, farthest, halfs[0], result);
 		ConvexHull._quickHull(farthest, b, halfs[1], result);
 	}
 
 
-	static giftWrapping(points: Point[], result)
+	static giftWrapping(points: Point[], result: Result)
 	{
 		var first = Helpers.findExtremes(points)['max'];
 
@@ -71,8 +51,8 @@ class ConvexHull
 		var line = [ 0, -1 ];
 
 		do {
-			result.counter++;
-			result.polygon.push(current);
+			result.count();
+			result.addVertex(current);
 
 			var angle = null;
 			var newLine = null;
@@ -83,8 +63,8 @@ class ConvexHull
 					continue;
 				}
 
-				result.counter++;
-				var tmpLine = [ points[i].x - current.x, points[i].y - current.y ];
+				result.count();
+				var tmpLine = [ points[i].getX() - current.getX(), points[i].getY() - current.getY() ];
 				var tmpAngle = Helpers.vectorsAngle(line, tmpLine);
 
 				if (angle === null || tmpAngle < angle) {
@@ -101,7 +81,7 @@ class ConvexHull
 	}
 
 
-	static primitive(points: Point[], result)
+	static primitive(points: Point[], result: Result)
 	{
 		var pointCount = points.length;
 
@@ -123,7 +103,7 @@ class ConvexHull
 							continue;
 						}
 
-						result.counter++;
+						result.count();
 						if (Helpers.laysPointInTriangle(points[i], points[j], points[k], points[l])) {
 							isCP = false;
 						}
@@ -132,11 +112,11 @@ class ConvexHull
 			}
 
 			if (isCP) {
-				result.polygon.push(points[i]);
+				result.addVertex(points[i]);
 			}
 		}
 
-		result.polygon = Helpers.sortConvexPolygon(result.polygon);
+		result.sortPolygon();
 	}
 
 }

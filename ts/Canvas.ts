@@ -6,13 +6,13 @@
 class Canvas
 {
 
-	public width: number;
-	public height: number;
-	public canvas: JQuery;
-	public padding: number;
+	private width: number;
+	private height: number;
+	private canvas: JQuery;
+	private padding: number;
 
 
-	constructor(canvas: JQuery, padding)
+	constructor(canvas: JQuery, padding: number)
 	{
 		this.canvas = canvas;
 		this.padding = padding;
@@ -21,9 +21,28 @@ class Canvas
 	}
 
 
+	getWidth()
+	{
+		return this.width;
+	}
+
+
+	getHeight()
+	{
+		return this.height;
+	}
+
+
+	getPadding()
+	{
+		return this.padding;
+	}
+
+
 	drawPoints(points: Point[])
 	{
-		this.canvas.removeLayers().clearCanvas();
+		this.canvas.removeLayers()
+				.clearCanvas();
 
 		for (var i = 0, len = points.length; i < len; i++) {
 			this.drawPoint('' + i, points[i], '#000', '#777');
@@ -34,10 +53,10 @@ class Canvas
 	drawPoint(name: string, p: Point, borderColor: string, fillColor: string)
 	{
 		this.canvas.drawArc({
-			x: p.x,
-			y: p.y,
 			radius: 3,
 			layer: true,
+			x: p.getX(),
+			y: p.getY(),
 			strokeWidth: 1,
 			groups: [ 'point' ],
 			fillStyle: fillColor,
@@ -49,8 +68,8 @@ class Canvas
 
 	highlightPoint(p: Point, borderColor: string, fillColor: string)
 	{
-		this.canvas.removeLayer('point.' + p.i);
-		this.drawPoint('' + p.i, p, borderColor, fillColor);
+		this.canvas.removeLayer('point.' + p.getI());
+		this.drawPoint('' + p.getI(), p, borderColor, fillColor);
 	}
 
 
@@ -68,10 +87,10 @@ class Canvas
 				groups: [ 'polygon' ],
 				name: 'polygonLine.' + i,
 
-				x1: polygon[i].x,
-				y1: polygon[i].y,
-				x2: polygon[(i + 1) % len].x,
-				y2: polygon[(i + 1) % len].y
+				x1: polygon[i].getX(),
+				y1: polygon[i].getY(),
+				x2: polygon[(i + 1) % len].getX(),
+				y2: polygon[(i + 1) % len].getY()
 			});
 		}
 	}

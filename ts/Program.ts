@@ -7,8 +7,8 @@ class Program
 {
 
 	canvas: Canvas;
-	points: Point[];
 	controls: Controls;
+	points: Point[] = [];
 
 
 	constructor(canvas: Canvas, controls: Controls)
@@ -78,11 +78,11 @@ class Program
 
 		while (this.points.length < num) {
 			var duplicate = false;
-			var x = this.canvas.padding + Math.floor((this.canvas.width - 2 * this.canvas.padding) * Math.random());
-			var y = this.canvas.padding + Math.floor((this.canvas.height - 2 * this.canvas.padding) * Math.random());
+			var x = this.canvas.getPadding() + Math.floor((this.canvas.getWidth() - 2 * this.canvas.getPadding()) * Math.random());
+			var y = this.canvas.getPadding() + Math.floor((this.canvas.getHeight() - 2 * this.canvas.getPadding()) * Math.random());
 
 			for (var i = 0, len = this.points.length; i < len; i++) {
-				if (this.points[i].x === x || this.points[i].y === y) {
+				if (this.points[i].getX() === x || this.points[i].getY() === y) {
 					duplicate = true;
 					break;
 				}
@@ -95,19 +95,15 @@ class Program
 	}
 
 
-	runAlgorithm(callback: (points: Point[], result) => void, name: string)
+	runAlgorithm(callback: (points: Point[], result: Result) => void, name: string)
 	{
-		var result = {
-			counter: 0,
-			polygon: []
-		};
-
+		var result = new Result();
 		var start = (new Date()).getTime();
 		callback(this.points, result);
 		var elapsed = (new Date()).getTime() - start;
 
-		this.canvas.drawPolygon(result.polygon, '#44f', '#99f');
-		this.canvas.operationCountInfo(result.counter, elapsed, name);
+		this.canvas.drawPolygon(result.getPolygon(), '#44f', '#99f');
+		this.canvas.operationCountInfo(result.getCounter(), elapsed, name);
 	}
 
 
