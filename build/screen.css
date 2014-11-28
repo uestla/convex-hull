@@ -1,5 +1,5 @@
 body {
-	padding-bottom: 55px;
+	padding-bottom: 75px;
 }
 
 .js #canvas {
@@ -25,12 +25,16 @@ table.table > tbody > tr > td {
 }
 
 #footer {
+	right: 0;
+	bottom: 0;
 	color: #777;
-	right: 30px;
-	bottom: 20px;
+	width: 100%;
 	font-size: 11px;
 	position: fixed;
+	background: #fff;
 	text-align: right;
+	padding: 20px 30px;
+	border-top: 1px solid #ccc;
 }
 
 #footer a {
