@@ -6,7 +6,7 @@ module ConvexHull
 
 		static sortConvexPolygon(points: Point[])
 		{
-			var c = this.findCentroid(points);
+			var c = Helpers.findCentroid(points);
 
 			for (var i = 0, len = points.length; i < len; i++) {
 				points[i].setAngle(Math.atan2(points[i].getY() - c.getY(), points[i].getX() - c.getX()));
