@@ -95,11 +95,10 @@ class Program
 	}
 
 
-	runAlgorithm(callback: (points: Point[], result: Result) => void, name: string)
+	runAlgorithm(callback: (points: Point[]) => Result, name: string)
 	{
-		var result = new Result();
 		var start = (new Date()).getTime();
-		callback(this.points, result);
+		var result = callback(this.points);
 		var elapsed = (new Date()).getTime() - start;
 
 		this.canvas.drawPolygon(result.getPolygon(), '#44f', '#99f');

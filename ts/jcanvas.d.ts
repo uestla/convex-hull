@@ -7,6 +7,7 @@ interface JQuery {
 	drawText(options: any): JQuery;
 	removeLayer(name: string): JQuery;
 	removeLayerGroup(name: string): JQuery;
+	setLayer(name: string, options: any): JQuery;
 	setLayerGroup(name: string, options: any): JQuery;
 
 	attr(name: string, value: boolean): JQuery;

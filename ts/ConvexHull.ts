@@ -6,8 +6,9 @@
 class ConvexHull
 {
 
-	static quickHull(points: Point[], result: Result)
+	static quickHull(points: Point[])
 	{
+		var result = new Result();
 		var extremes = Helpers.findExtremes(points);
 		var min = extremes.min;
 		var max = extremes.max;
@@ -21,6 +22,7 @@ class ConvexHull
 		ConvexHull._quickHull(max, min, points, result);
 
 		result.sortPolygon();
+		return result;
 	}
 
 
@@ -43,8 +45,9 @@ class ConvexHull
 	}
 
 
-	static giftWrapping(points: Point[], result: Result)
+	static giftWrapping(points: Point[])
 	{
+		var result = new Result();
 		var first = Helpers.findExtremes(points)['max'];
 
 		var current = first;
@@ -78,11 +81,14 @@ class ConvexHull
 			current = newCurrent;
 
 		} while (current !== first);
+
+		return result;
 	}
 
 
-	static primitive(points: Point[], result: Result)
+	static primitive(points: Point[])
 	{
+		var result = new Result();
 		var pointCount = points.length;
 
 		for (var i = 0; i < pointCount; i++) {
@@ -117,6 +123,7 @@ class ConvexHull
 		}
 
 		result.sortPolygon();
+		return result;
 	}
 
 }

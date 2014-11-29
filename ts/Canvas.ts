@@ -68,8 +68,11 @@ class Canvas
 
 	highlightPoint(p: Point, borderColor: string, fillColor: string)
 	{
-		this.canvas.removeLayer('point.' + p.getI());
-		this.drawPoint('' + p.getI(), p, borderColor, fillColor);
+		this.canvas.setLayer('point.' + p.getI(), {
+			fillStyle: fillColor,
+			strokeStyle: borderColor
+
+		}).drawLayers();;
 	}
 
 
