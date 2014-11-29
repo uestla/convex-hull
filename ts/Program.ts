@@ -31,14 +31,12 @@ class Program
 		});
 
 
-		var algButtons = this.getAlgButtons();
-
-		for (var i = 0, len = algButtons.length; i < len; i++) {
-			algButtons[i].on('click', (event) => {
+		this.processAlgButtons((button: JQuery) => {
+			button.on('click', (event) => {
 				this.setAlgButtonsDisabled(true);
 				this.controls.clearButton.attr('disabled', null);
 			});
-		}
+		});
 
 
 		this.controls.generatorButton.on('click', (event) => {
@@ -72,7 +70,7 @@ class Program
 	}
 
 
-	generatePoints(num: number)
+	private generatePoints(num: number)
 	{
 		this.points = [];
 
@@ -95,7 +93,7 @@ class Program
 	}
 
 
-	runAlgorithm(callback: (points: Point[]) => Result, name: string)
+	private runAlgorithm(callback: (points: Point[]) => Result, name: string)
 	{
 		var start = (new Date()).getTime();
 		var result = callback(this.points);
@@ -106,19 +104,21 @@ class Program
 	}
 
 
-	setAlgButtonsDisabled(disabled: boolean = true)
+	private setAlgButtonsDisabled(disabled: boolean = true)
 	{
-		var buttons = this.getAlgButtons();
-
-		for (var i = 0, len = buttons.length; i < len; i++) {
-			buttons[i].attr('disabled', disabled ? true : null);
-		}
+		this.processAlgButtons((button: JQuery) => {
+			button.attr('disabled', disabled ? true : null);
+		});
 	}
 
 
-	getAlgButtons()
+	private processAlgButtons(callback: (button: JQuery) => void)
 	{
-		return [ this.controls.quickHullButton, this.controls.giftWrappingButton, this.controls.primitiveButton ];
+		var buttons = [ this.controls.quickHullButton, this.controls.giftWrappingButton, this.controls.primitiveButton ];
+
+		for (var i = 0, len = buttons.length; i < len; i++) {
+			callback(buttons[i]);
+		}
 	}
 
 }
