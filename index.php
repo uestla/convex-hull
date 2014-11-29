@@ -5,7 +5,7 @@
 		<meta name="author" content="kesspess">
 		<meta name="robots" content="index,follow">
 
-		<title>Convex Hull algorithms | POGR1</title>
+		<title>Convex Hull algorithms</title>
 
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/spacelab/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo mtime('screen.css') ?>">
