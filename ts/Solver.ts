@@ -9,7 +9,7 @@ module ConvexHull
 	export class Solver
 	{
 
-		static quickHull(points: Point[])
+		static quickHull(points: Point[]): Result
 		{
 			var result = new Result();
 			var extremes = Helpers.findExtremes(points);
@@ -29,7 +29,7 @@ module ConvexHull
 		}
 
 
-		private static _quickHull(a: Point, b: Point, points: Point[], result: Result)
+		private static _quickHull(a: Point, b: Point, points: Point[], result: Result): void
 		{
 			if (!points.length) {
 				return ;
@@ -48,7 +48,7 @@ module ConvexHull
 		}
 
 
-		static giftWrapping(points: Point[])
+		static giftWrapping(points: Point[]): Result
 		{
 			var result = new Result();
 			var first = Helpers.findExtremes(points)['max'];
@@ -89,7 +89,7 @@ module ConvexHull
 		}
 
 
-		static primitive(points: Point[])
+		static primitive(points: Point[]): Result
 		{
 			var result = new Result();
 			var pointCount = points.length;

@@ -24,25 +24,25 @@ module ConvexHull
 		}
 
 
-		getWidth()
+		getWidth(): number
 		{
 			return this.width;
 		}
 
 
-		getHeight()
+		getHeight(): number
 		{
 			return this.height;
 		}
 
 
-		getPadding()
+		getPadding(): number
 		{
 			return this.padding;
 		}
 
 
-		drawPoints(points: Point[])
+		drawPoints(points: Point[]): void
 		{
 			this.canvas.removeLayers()
 					.clearCanvas();
@@ -53,7 +53,7 @@ module ConvexHull
 		}
 
 
-		drawPoint(name: string, p: Point, borderColor: string, fillColor: string)
+		drawPoint(name: string, p: Point, borderColor: string, fillColor: string): void
 		{
 			this.canvas.drawArc({
 				radius: 3,
@@ -69,7 +69,7 @@ module ConvexHull
 		}
 
 
-		highlightPoint(p: Point, borderColor: string, fillColor: string)
+		highlightPoint(p: Point, borderColor: string, fillColor: string): void
 		{
 			this.canvas.setLayer('point.' + p.getI(), {
 				fillStyle: fillColor,
@@ -79,7 +79,7 @@ module ConvexHull
 		}
 
 
-		drawPolygon(polygon: Point[], borderColor: string, color: string)
+		drawPolygon(polygon: Point[], borderColor: string, color: string): void
 		{
 			this.canvas.removeLayerGroup('polygon');
 
@@ -102,7 +102,7 @@ module ConvexHull
 		}
 
 
-		operationCountInfo(count: number, elapsedTime: number, algName: string)
+		operationCountInfo(count: number, elapsedTime: number, algName: string): void
 		{
 			this.canvas.drawText({
 				x: 10,
@@ -118,7 +118,7 @@ module ConvexHull
 		}
 
 
-		clearSolution()
+		clearSolution(): void
 		{
 			this.canvas.removeLayerGroup('polygon')
 				.removeLayer('operationCount')

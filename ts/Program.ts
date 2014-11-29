@@ -21,7 +21,7 @@ module ConvexHull
 		}
 
 
-		run()
+		run(): void
 		{
 			var onPointCountChange = () => {
 				this.controls.getPointCountInfo().text(this.controls.getPointCount());
@@ -70,7 +70,7 @@ module ConvexHull
 		}
 
 
-		private generatePoints(num: number)
+		private generatePoints(num: number): void
 		{
 			this.points = [];
 
@@ -93,7 +93,7 @@ module ConvexHull
 		}
 
 
-		private runAlgorithm(callback: (points: Point[]) => Result, name: string)
+		private runAlgorithm(callback: (points: Point[]) => Result, name: string): void
 		{
 			var start = (new Date()).getTime();
 			var result = callback(this.points);
@@ -104,7 +104,7 @@ module ConvexHull
 		}
 
 
-		private setAlgButtonsDisabled(disabled: boolean = true)
+		private setAlgButtonsDisabled(disabled: boolean = true): void
 		{
 			this.processAlgButtons((button: JQuery) => {
 				button.attr('disabled', disabled ? true : null);
@@ -114,7 +114,7 @@ module ConvexHull
 		}
 
 
-		private processAlgButtons(callback: (button: JQuery) => void)
+		private processAlgButtons(callback: (button: JQuery) => void): void
 		{
 			var buttons = [ this.controls.getQuickHullButton(), this.controls.getGiftWrappingButton(), this.controls.getPrimitiveButton() ];
 

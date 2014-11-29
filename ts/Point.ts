@@ -18,31 +18,31 @@ module ConvexHull
 		}
 
 
-		getX()
+		getX(): number
 		{
 			return this.x;
 		}
 
 
-		getY()
+		getY(): number
 		{
 			return this.y;
 		}
 
 
-		getI()
+		getI(): number
 		{
 			return this.i;
 		}
 
 
-		getAngle()
+		getAngle(): number
 		{
 			return this.angle;
 		}
 
 
-		setAngle(angle: number)
+		setAngle(angle: number): Point
 		{
 			this.angle = angle;
 			return this;

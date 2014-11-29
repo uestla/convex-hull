@@ -11,33 +11,33 @@ module ConvexHull
 		private polygon: Point[] = [];
 
 
-		count(num: number = 1)
+		count(num: number = 1): Result
 		{
 			this.counter += num;
 			return this;
 		}
 
 
-		getCounter()
+		getCounter(): number
 		{
 			return this.counter;
 		}
 
 
-		addVertex(v: Point)
+		addVertex(v: Point): Result
 		{
 			this.polygon.push(v);
 			return this;
 		}
 
 
-		getPolygon()
+		getPolygon(): Point[]
 		{
 			return this.polygon;
 		}
 
 
-		sortPolygon()
+		sortPolygon(): Result
 		{
 			this.polygon = Helpers.sortConvexPolygon(this.polygon);
 			return this;

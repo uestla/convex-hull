@@ -38,13 +38,13 @@ module ConvexHull
 		}
 
 
-		getPointCountSlider()
+		getPointCountSlider(): JQuery
 		{
 			return this.pointCountSlider;
 		}
 
 
-		getPointCountInfo()
+		getPointCountInfo(): JQuery
 		{
 			return this.pointCountInfo;
 		}
@@ -56,31 +56,31 @@ module ConvexHull
 		}
 
 
-		getGeneratorButton()
+		getGeneratorButton(): JQuery
 		{
 			return this.generatorButton;
 		}
 
 
-		getQuickHullButton()
+		getQuickHullButton(): JQuery
 		{
 			return this.quickHullButton;
 		}
 
 
-		getGiftWrappingButton()
+		getGiftWrappingButton(): JQuery
 		{
 			return this.giftWrappingButton;
 		}
 
 
-		getPrimitiveButton()
+		getPrimitiveButton(): JQuery
 		{
 			return this.primitiveButton;
 		}
 
 
-		getClearButton()
+		getClearButton(): JQuery
 		{
 			return this.clearButton;
 		}

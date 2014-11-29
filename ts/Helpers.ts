@@ -4,7 +4,7 @@ module ConvexHull
 	export class Helpers
 	{
 
-		static sortConvexPolygon(points: Point[])
+		static sortConvexPolygon(points: Point[]): Point[]
 		{
 			var c = Helpers.findCentroid(points);
 
@@ -20,7 +20,7 @@ module ConvexHull
 		}
 
 
-		static findCentroid(points: Point[])
+		static findCentroid(points: Point[]): Point
 		{
 			var x = 0;
 			var y = 0;
@@ -37,7 +37,7 @@ module ConvexHull
 		}
 
 
-		static laysPointInTriangle(a: Point, k: Point, l: Point, m: Point)
+		static laysPointInTriangle(a: Point, k: Point, l: Point, m: Point): boolean
 		{
 			return (l.getY() - k.getY()) * (k.getX() - a.getX()) + (k.getX() - l.getX()) * (k.getY() - a.getY()) <= 0
 					&& (m.getY() - l.getY()) * (l.getX() - a.getX()) + (l.getX() - m.getX()) * (l.getY() - a.getY()) <= 0
@@ -45,7 +45,7 @@ module ConvexHull
 		}
 
 
-		static findExtremes(points: Point[])
+		static findExtremes(points: Point[]): any
 		{
 			var minX = null;
 			var maxX = null;
@@ -67,13 +67,13 @@ module ConvexHull
 		}
 
 
-		static vectorsAngle(u: number[], v: number[])
+		static vectorsAngle(u: number[], v: number[]): number
 		{
 			return Math.atan2(u[0] * v[1] - v[0] * u[1], u[0] * v[0] + u[1] * v[1]);
 		}
 
 
-		static findFarthestPointFromLineToTheLeft(a: Point, b: Point, points: Point[])
+		static findFarthestPointFromLineToTheLeft(a: Point, b: Point, points: Point[]): Point
 		{
 			var farthest = null;
 			var distance = null;
@@ -99,7 +99,7 @@ module ConvexHull
 		}
 
 
-		static splitPointsByTriangle(a: Point, b: Point, c: Point, points: Point[])
+		static splitPointsByTriangle(a: Point, b: Point, c: Point, points: Point[]): Point[][]
 		{
 			var halfs = [[], []];
 
@@ -124,13 +124,13 @@ module ConvexHull
 		}
 
 
-		static isPointToTheLeftFromLine(x: Point, a: Point, b: Point)
+		static isPointToTheLeftFromLine(x: Point, a: Point, b: Point): boolean
 		{
 			return ((b.getX() - a.getX()) * (x.getY() - a.getY()) - (b.getY() - a.getY()) * (x.getX() - a.getX())) < 0;
 		}
 
 
-		static pointFromLineDistance(x: Point, a: Point, b: Point)
+		static pointFromLineDistance(x: Point, a: Point, b: Point): number
 		{
 			var Dx = b.getX() - a.getX();
 			var Dy = b.getY() - a.getY();
