@@ -7,7 +7,7 @@
 
 		<title>Convex Hull algorithms | POGR1</title>
 
-		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/spacelab/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo mtime('screen.css') ?>">
 
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
@@ -165,7 +165,15 @@
 							</li>
 
 							<li>
+								<a href="http://modernizr.com/">Modernizr</a>
+							</li>
+
+							<li>
 								<a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+							</li>
+
+							<li>
+								<a href="http://bootswatch.com/">Bootswatch (Spacelab)</a>
 							</li>
 						</ul>
 
