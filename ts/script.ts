@@ -9,9 +9,9 @@ interface Window {
 
 (function (window, $) {
 
-	var canvas = new Canvas($('#canvas'), 50);
+	var canvas = new ConvexHull.Canvas($('#canvas'), 50);
 
-	var controls = new Controls(
+	var controls = new ConvexHull.Controls(
 		$('#point-count'),
 		$('#point-count-info'),
 		$('#generate'),
@@ -21,7 +21,7 @@ interface Window {
 		$('#clear')
 	);
 
-	var program = new Program(canvas, controls);
+	var program = new ConvexHull.Program(canvas, controls);
 	program.run();
 
 })(window, window.jQuery);

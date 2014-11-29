@@ -1,43 +1,48 @@
 /// <reference path="Point.ts" />
 
 
-class Result
+module ConvexHull
 {
 
-	private counter: number = 0;
-	private polygon: Point[] = [];
-
-
-	count(num: number = 1)
+	export class Result
 	{
-		this.counter += num;
-		return this;
-	}
+
+		private counter: number = 0;
+		private polygon: Point[] = [];
 
 
-	getCounter()
-	{
-		return this.counter;
-	}
+		count(num: number = 1)
+		{
+			this.counter += num;
+			return this;
+		}
 
 
-	addVertex(v: Point)
-	{
-		this.polygon.push(v);
-		return this;
-	}
+		getCounter()
+		{
+			return this.counter;
+		}
 
 
-	getPolygon()
-	{
-		return this.polygon;
-	}
+		addVertex(v: Point)
+		{
+			this.polygon.push(v);
+			return this;
+		}
 
 
-	sortPolygon()
-	{
-		this.polygon = Helpers.sortConvexPolygon(this.polygon);
-		return this;
+		getPolygon()
+		{
+			return this.polygon;
+		}
+
+
+		sortPolygon()
+		{
+			this.polygon = Helpers.sortConvexPolygon(this.polygon);
+			return this;
+		}
+
 	}
 
 }

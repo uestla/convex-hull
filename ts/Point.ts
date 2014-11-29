@@ -1,48 +1,53 @@
-class Point
+module ConvexHull
 {
 
-	private x: number;
-	private y: number;
-	private i: number;
-	private angle: number = 0;
-
-
-	constructor(x: number, y: number, i: number = -1)
+	export class Point
 	{
-		this.x = x;
-		this.y = y;
-		this.i = i;
-	}
+
+		private x: number;
+		private y: number;
+		private i: number;
+		private angle: number = 0;
 
 
-	getX()
-	{
-		return this.x;
-	}
+		constructor(x: number, y: number, i: number = -1)
+		{
+			this.x = x;
+			this.y = y;
+			this.i = i;
+		}
 
 
-	getY()
-	{
-		return this.y;
-	}
+		getX()
+		{
+			return this.x;
+		}
 
 
-	getI()
-	{
-		return this.i;
-	}
+		getY()
+		{
+			return this.y;
+		}
 
 
-	getAngle()
-	{
-		return this.angle;
-	}
+		getI()
+		{
+			return this.i;
+		}
 
 
-	setAngle(angle: number)
-	{
-		this.angle = angle;
-		return this;
+		getAngle()
+		{
+			return this.angle;
+		}
+
+
+		setAngle(angle: number)
+		{
+			this.angle = angle;
+			return this;
+		}
+
 	}
 
 }
