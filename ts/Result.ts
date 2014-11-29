@@ -11,6 +11,7 @@ class Result
 	count(num: number = 1)
 	{
 		this.counter += num;
+		return this;
 	}
 
 

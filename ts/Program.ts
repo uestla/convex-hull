@@ -21,12 +21,12 @@ class Program
 	run()
 	{
 		var onPointCountChange = () => {
-			this.controls.pointCountInfo.text(this.controls.getPointCount());
+			this.controls.getPointCountInfo().text(this.controls.getPointCount());
 		}
 
 		onPointCountChange();
 
-		this.controls.pointCountSlider.on('input change', (event) => {
+		this.controls.getPointCountSlider().on('input change', (event) => {
 			onPointCountChange();
 		});
 
@@ -34,38 +34,35 @@ class Program
 		this.processAlgButtons((button: JQuery) => {
 			button.on('click', (event) => {
 				this.setAlgButtonsDisabled(true);
-				this.controls.clearButton.attr('disabled', null);
 			});
 		});
 
 
-		this.controls.generatorButton.on('click', (event) => {
+		this.controls.getGeneratorButton().on('click', (event) => {
 			this.generatePoints(this.controls.getPointCount());
 			this.canvas.drawPoints(this.points);
 			this.setAlgButtonsDisabled(false);
-			this.controls.clearButton.attr('disabled', true);
 		});
 
 
-		this.controls.quickHullButton.on('click', (event) => {
+		this.controls.getQuickHullButton().on('click', (event) => {
 			this.runAlgorithm(ConvexHull.quickHull, 'quick hull');
 		});
 
 
-		this.controls.giftWrappingButton.on('click', (event) => {
+		this.controls.getGiftWrappingButton().on('click', (event) => {
 			this.runAlgorithm(ConvexHull.giftWrapping, 'gift wrapping');
 		});
 
 
-		this.controls.primitiveButton.on('click', (event) => {
+		this.controls.getPrimitiveButton().on('click', (event) => {
 			this.runAlgorithm(ConvexHull.primitive, 'primitive');
 		});
 
 
-		this.controls.clearButton.on('click', (event) => {
+		this.controls.getClearButton().on('click', (event) => {
 			this.canvas.clearSolution();
 			this.setAlgButtonsDisabled(false);
-			this.controls.clearButton.attr('disabled', true);
 		});
 	}
 
@@ -109,12 +106,14 @@ class Program
 		this.processAlgButtons((button: JQuery) => {
 			button.attr('disabled', disabled ? true : null);
 		});
+
+		this.controls.getClearButton().attr('disabled', disabled ? null : true);
 	}
 
 
 	private processAlgButtons(callback: (button: JQuery) => void)
 	{
-		var buttons = [ this.controls.quickHullButton, this.controls.giftWrappingButton, this.controls.primitiveButton ];
+		var buttons = [ this.controls.getQuickHullButton(), this.controls.getGiftWrappingButton(), this.controls.getPrimitiveButton() ];
 
 		for (var i = 0, len = buttons.length; i < len; i++) {
 			callback(buttons[i]);
