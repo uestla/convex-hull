@@ -1,1 +1,47 @@
-body{padding-bottom:75px}.js #canvas{margin:0 auto;display:block;border:1px solid #ccc}#generate{margin-top:8px}#algs{margin-top:32px}table.table>tbody>tr>td{vertical-align:middle}table.table>tbody>tr>td{border:0}#footer{right:0;bottom:0;color:#777;width:100%;font-size:11px;position:fixed;background:#fff;text-align:right;padding:20px 30px;border-top:1px solid #ccc}#footer a{color:#777;text-decoration:underline}#footer a:hover{color:#444}
+body {
+	padding-bottom: 75px;
+}
+
+.js #canvas {
+	margin: 0 auto;
+	display: block;
+	border: 1px solid #ccc;
+}
+
+#generate {
+	margin-top: 8px;
+}
+
+#algs {
+	margin-top: 32px;
+}
+
+table.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+table.table > tbody > tr > td {
+	border: 0;
+}
+
+#footer {
+	right: 0;
+	bottom: 0;
+	color: #777;
+	width: 100%;
+	font-size: 11px;
+	position: fixed;
+	background: #fff;
+	text-align: right;
+	padding: 20px 30px;
+	border-top: 1px solid #ccc;
+}
+
+#footer a {
+	color: #777;
+	text-decoration: underline;
+}
+
+#footer a:hover {
+	color: #444;
+}
