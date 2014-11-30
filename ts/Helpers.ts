@@ -1,3 +1,6 @@
+/// <reference path="Point.ts" />
+
+
 module ConvexHull
 {
 

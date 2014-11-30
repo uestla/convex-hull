@@ -1,5 +1,6 @@
 /// <reference path="Canvas.ts" />
 /// <reference path="Program.ts" />
+/// <reference path="Controls.ts" />
 
 
 interface Window {

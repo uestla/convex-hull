@@ -1,6 +1,7 @@
 /// <reference path="Point.ts" />
 /// <reference path="Solver.ts" />
 /// <reference path="Controls.ts" />
+/// <reference path="jquery.d.ts" />
 
 
 module ConvexHull
