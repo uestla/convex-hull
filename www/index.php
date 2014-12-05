@@ -109,7 +109,7 @@
 					</div>
 
 					<div class="modal-body">
-                        <h2>Konvexní obal bodů v&nbsp;rovině</h2>
+						<h2>Konvexní obal bodů v&nbsp;rovině</h2>
 
 						<h3>Autor</h3>
 
