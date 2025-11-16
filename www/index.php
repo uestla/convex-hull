@@ -191,7 +191,7 @@
 
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="//cdn.rawgit.com/caleb531/jcanvas/master/jcanvas.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/23.0.0/umd/jcanvas.min.js" integrity="sha512-er0DmT/qr4MksUrnDFSTvC+LTu6Xxl5L+sSsCYZpECaNaApyytoxB96UwWgNHWotyFm62LS5YwkdRTpPbL00mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script type="text/javascript" src="<?php echo mtime('script.js') ?>"></script>
 
 	</body>
