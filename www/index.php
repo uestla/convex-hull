@@ -186,7 +186,7 @@
 
 
 		<div id="footer">
-			<a href="http://kesspess.1991.cz/">Petr Kessler</a> | <a href="#n" data-toggle="modal" data-target="#docs-modal">Docs (cs)</a> | <a href="https://github.com/uestla/convex-hull">GitHub</a> | POGR1 | FJFI CTU Prague | 2014
+			<a href="https://kesspess.cz/">Petr Kessler</a> | <a href="#n" data-toggle="modal" data-target="#docs-modal">Docs (cs)</a> | <a href="https://github.com/uestla/convex-hull">GitHub</a> | POGR1 | FJFI CTU Prague | 2014
 		</div>
 
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
